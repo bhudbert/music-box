@@ -2,33 +2,50 @@
 
 namespace App\Controller;
 
-use App\Entity\Instrument;
-use App\Entity\Category;
 
-use App\Repository\CategoryRepository;
+use App\Repository\InstrumentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 class InstrumentController extends AbstractController
 {
+
+    private $repository;
+        // I prefer make injection in constructor for multiple uses
+    public function __construct(InstrumentRepository $instRepo)
+    {
+        $this->repository =  $instRepo;
+
+    }
+
+
     /**
-     * @Route("/instrument", name="instrument")
+     * @Route("/instruments", name="instruments")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function index()
     {
-        $catRepo=$this->getDoctrine()->getRepository(Category::class);
-        $cat=$catRepo->find(1);
 
-        $inst=new Instrument();
-        $inst->setCategory($cat);
-        $inst->setName("stratocaster");
-        $inst->setDescription("Une guitare Fender !");
-        $em=$this->getDoctrine()->getManager();
-        $em->persist($inst);
-        $em->flush();
+        $inst=$this->repository->findInStock();
+
+
         return $this->render('instrument/index.html.twig', [
-            'controller_name' => 'InstrumentController',
+            'instruments' => $inst
+        ]);
+    }
+    /**
+     * @Route("/instrument/{name}_{id}", name="instrument/" ,requirements={"slug":"[a-Z0-9\-\_]*"})
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function show($id)
+    {
+
+        $inst=$this->repository->find($id) ;
+        dump($id);
+
+
+        return $this->render('instrument/show.html.twig', [
+            'instrument' => $inst
         ]);
     }
 }

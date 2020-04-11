@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello InstrumentController!{% endblock %}
+{% block title %}Show{% endblock %}
 
 {% block body %}
 <div class="container">
@@ -8,7 +8,7 @@
     <h1>Mes beaux instruments! </h1>
     <br>
     <div class="row flex">
-        {%   for instrument in instruments %}
+
             <div class="col-4">
               <div class="card">
                   <div class="card-body">
@@ -18,13 +18,13 @@
                       <p>
                           {{ instrument.description }}
                       </p>
-                      <a href="{{ path('instrument/',{ name:instrument.slug ,id:instrument.id }) }}">Plus..</a>
+
 
                   </div>
               </div>
 
             </div>
-        {% endfor %}
+
     </div>
 
 

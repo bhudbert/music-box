@@ -19,32 +19,30 @@ class InstrumentRepository extends ServiceEntityRepository
         parent::__construct($registry, Instrument::class);
     }
 
-    // /**
-    //  * @return Instrument[] Returns an array of Instrument objects
-    //  */
-    /*
-    public function findByExampleField($value)
+     /**
+     * @return Instrument[]
+     */
+
+    public function findInStock() : array
     {
         return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('i.id', 'ASC')
-            ->setMaxResults(10)
+          ->where('i.stock>0')
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Instrument
-    {
-        return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
+    /**
+     * @return Instrument[]
+     */
+
+    public function findPromoted() : array
+    {return $this->createQueryBuilder('i')
+        ->where('i.stock>0')
+        ->andWhere('i.promoted=true')
+        ->getQuery()
+        ->getResult()
         ;
+
     }
-    */
 }

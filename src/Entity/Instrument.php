@@ -33,6 +33,38 @@ class Instrument
      */
     private $category;
 
+    /**
+     * @ORM\Column(type="smallint",options={"default":0})
+     */
+    private $stock;
+
+    /**
+     * @ORM\Column(type="boolean",options={"default":false})
+     */
+    private $promoted;
+
+    /**
+     * @ORM\Column(type="string", length=60, nullable=true)
+     */
+    private $illustration;
+
+    /**
+     * @return mixed
+     */
+    public function getStock()
+    {
+        return $this->stock;
+    }
+
+    /**
+     * @param mixed $stock
+     */
+    public function setStock($stock): void
+    {
+        $this->stock = $stock;
+    }
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -73,4 +105,34 @@ class Instrument
 
         return $this;
     }
+
+    public function getPropoted(): ?bool
+    {
+        return $this->propoted;
+    }
+
+    public function setPropoted(bool $propoted): self
+    {
+        $this->propoted = $propoted;
+
+        return $this;
+    }
+
+    public function getIllustration(): ?string
+    {
+        return $this->illustration;
+    }
+
+    public function setIllustration(?string $illustration): self
+    {
+        $this->illustration = $illustration;
+
+        return $this;
+    }
+
+    public function getSlug(): string
+    {
+        return str_replace(' ','-',$this->name);
+    }
+
 }

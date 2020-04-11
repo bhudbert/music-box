@@ -1,5 +1,7 @@
-
+.idea/
+.idea/.gitignore
 ###> symfony/framework-bundle ###
+.env
 /.env.local
 /.env.local.php
 /.env.*.local
