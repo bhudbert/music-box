@@ -106,14 +106,14 @@ class Instrument
         return $this;
     }
 
-    public function getPropoted(): ?bool
+    public function getPromoted(): ?bool
     {
-        return $this->propoted;
+        return $this->promoted;
     }
 
-    public function setPropoted(bool $propoted): self
+    public function setPromoted(bool $promoted): self
     {
-        $this->propoted = $propoted;
+        $this->promoted = $promoted;
 
         return $this;
     }

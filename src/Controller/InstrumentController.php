@@ -41,8 +41,6 @@ class InstrumentController extends AbstractController
     {
 
         $inst=$this->repository->find($id) ;
-        dump($id);
-
 
         return $this->render('instrument/show.html.twig', [
             'instrument' => $inst

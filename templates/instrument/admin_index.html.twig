@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello InstrumentController!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <br>
+        <h1>Edition Instrument </h1>
+        <br>
+        <div class="row flex">
+            <div class="col-8">
+
+            <div class="form-group">
+            {{ form_start(form) }}
+
+
+                {{ form_label(form.name) }}
+                {{ form_widget(form.name ,{'attr': {'class': 'form-control'} }) }}
+                <br/>
+                {{ form_label(form.description) }}
+                {{ form_widget(form.description ,{'attr': {'class': 'form-control'} }) }}
+
+                <br>
+                {{ form_label(form.category) }}
+                {{ form_widget(form.category ,{'attr': {'class': 'form-control'} }) }}
+                <br/>
+                {{ form_label(form.stock) }}
+                {{ form_widget(form.stock ,{'attr': {'class': 'form-control'} }) }}
+
+
+
+                <br/>
+                <div class="form-check-inline">
+                {{ form_widget(form.promoted ,{'attr': {'class': 'form-check '} } ) }}
+                &nbsp;&nbsp;&nbsp;
+                {{ form_label(form.promoted  ,null, {
+
+                    'label_attr': {'class': 'form-check-label',} } ) }}
+                </div>
+                <br/><br/>
+                {{ form_label(form.illustration) }}
+                {{ form_widget(form.illustration ,{'attr': {'class': 'form-control'} }) }}
+
+                <br>
+                <input type="submit" class="btn btn-secondary text-center" value="Valider">
+            {{ form_end(form) }}
+
+            </div>
+            <br><br>
+
+        </div>
+        </div>
+
+    </div>
+
+{% endblock %}
