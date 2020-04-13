@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200408085450 extends AbstractMigration
+final class Version20200411124411 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,8 +22,7 @@ final class Version20200408085450 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'postgresql', 'Migration can only be executed safely on \'postgresql\'.');
 
-        $this->addSql('CREATE SEQUENCE intrument_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
-        $this->addSql('CREATE TABLE intrument (id INT NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('ALTER TABLE instruments RENAME COLUMN propoted TO promoted');
     }
 
     public function down(Schema $schema) : void
@@ -32,7 +31,6 @@ final class Version20200408085450 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'postgresql', 'Migration can only be executed safely on \'postgresql\'.');
 
         $this->addSql('CREATE SCHEMA public');
-        $this->addSql('DROP SEQUENCE intrument_id_seq CASCADE');
-        $this->addSql('DROP TABLE intrument');
+        $this->addSql('ALTER TABLE instruments RENAME COLUMN promoted TO propoted');
     }
 }

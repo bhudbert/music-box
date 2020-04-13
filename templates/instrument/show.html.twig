@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Show{% endblock %}
+
+{% block body %}
+<div class="container">
+    <br>
+    <h1>Mes beaux instruments! </h1>
+    <br>
+    <div class="row flex">
+
+            <div class="col-4">
+              <div class="card">
+                  <div class="card-body">
+                      <h4 class="card-title">
+                          {{ instrument.name }}
+                      </h4>
+                      <p>
+                          {{ instrument.description }}
+                      </p>
+
+
+                  </div>
+              </div>
+
+            </div>
+
+    </div>
+
+
+</div>
+
+{% endblock %}
+
