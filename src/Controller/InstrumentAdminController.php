@@ -56,9 +56,10 @@ class InstrumentAdminController extends AbstractController
     public function edit($id,Request $request)
     {
         $instrument=$this->repository->find($id) ;
-        $form = $this->createForm(InstrumentType::class,$instrument);
 
+        $form = $this->createForm(InstrumentType::class,$instrument);
         $form->handleRequest($request);
+
         if($form->isSubmitted() && $form->isValid()){
             $this->em->flush();
            // return $this->redirectToRoute('home');
